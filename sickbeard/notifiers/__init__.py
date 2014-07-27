@@ -36,6 +36,8 @@ import pushalot
 import tweet
 import trakt
 
+import smtp
+
 from sickbeard.common import *
 from sickbeard import logger
 from sickbeard.exceptions import ex
@@ -58,6 +60,8 @@ pushalot_notifier = pushalot.PushalotNotifier()
 # social
 twitter_notifier = tweet.TwitterNotifier()
 trakt_notifier = trakt.TraktNotifier()
+# email
+smtp_notifier = smtp.SMTPNotifier()
 
 notifiers = [
     libnotify_notifier,  # Libnotify notifier goes first because it doesn't involve blocking on network activity.
@@ -75,6 +79,7 @@ notifiers = [
     pushalot_notifier,
     twitter_notifier,
     trakt_notifier,
+    smtp_notifier,
 ]
 
 
