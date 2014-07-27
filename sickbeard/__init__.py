@@ -300,6 +300,12 @@ PUSHALOT_NOTIFY_ONSNATCH = False
 PUSHALOT_NOTIFY_ONDOWNLOAD = False
 PUSHALOT_AUTHORIZATIONTOKEN = None
 
+USE_SMTP = False
+SMTP_NOTIFY_ONSNATCH = False
+SMTP_NOTIFY_ONDOWNLOAD = False
+SMTP_HOST = ''
+SMTP_PORT = 25
+
 COMING_EPS_LAYOUT = None
 COMING_EPS_DISPLAY_PAUSED = None
 COMING_EPS_SORT = None
@@ -645,6 +651,13 @@ def initialize(consoleLogging=True):
         PUSHALOT_NOTIFY_ONSNATCH = bool(check_setting_int(CFG, 'Pushalot', 'pushalot_notify_onsnatch', 0))
         PUSHALOT_NOTIFY_ONDOWNLOAD = bool(check_setting_int(CFG, 'Pushalot', 'pushalot_notify_ondownload', 0))
         PUSHALOT_AUTHORIZATIONTOKEN = check_setting_str(CFG, 'Pushalot', 'pushalot_authorizationtoken', '')
+
+        CheckSection(CFG, 'SMTP')
+        USE_SMTP = bool(check_setting_int(CFG, 'SMTP', 'use_smtp', 0))
+        SMTP_NOTIFY_ONSNATCH = bool(check_setting_int(CFG, 'SMTP', 'smtp_notify_onsnatch', 0))
+        SMTP_NOTIFY_ONDOWNLOAD = bool(check_setting_int(CFG, 'SMTP', 'smtp_notify_ondownload', 0))
+        SMTP_HOST = check_setting_str(CFG, 'SMTP', 'smtp_host', '')
+        SMTP_PORT = check_setting_int(CFG, 'SMTP', 'smtp_port', 25)
 
         if not os.path.isfile(CONFIG_FILE):
             logger.log(u"Unable to find '" + CONFIG_FILE + "', all settings will be default!", logger.DEBUG)
