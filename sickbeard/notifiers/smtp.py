@@ -41,6 +41,7 @@ class SMTPNotifier:
             self._notify(notifyStrings[NOTIFY_DOWNLOAD], ep_name)
 
     def test_notify(self, server_address, server_port, to_address):
+        logger.log(u"SMTP: test_notify " +message+" to " + to_address + " via " + server_address + ":" +server_port, logger.INFO)
         return self._notify(server_address, server_port, "Test", "This is a test notification from Sick Beard", to_address)
 
     def update_library(self, ep_obj=None):
