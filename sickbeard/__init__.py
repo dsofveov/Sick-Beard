@@ -305,6 +305,7 @@ SMTP_NOTIFY_ONSNATCH = False
 SMTP_NOTIFY_ONDOWNLOAD = False
 SMTP_HOST = ''
 SMTP_PORT = 25
+SMTP_ADDRESS = ''
 
 COMING_EPS_LAYOUT = None
 COMING_EPS_DISPLAY_PAUSED = None
@@ -658,6 +659,7 @@ def initialize(consoleLogging=True):
         SMTP_NOTIFY_ONDOWNLOAD = bool(check_setting_int(CFG, 'SMTP', 'smtp_notify_ondownload', 0))
         SMTP_HOST = check_setting_str(CFG, 'SMTP', 'smtp_host', '')
         SMTP_PORT = check_setting_int(CFG, 'SMTP', 'smtp_port', 25)
+        SMTP_ADDRESS = check_setting_str(CFG, 'SMTP', 'smtp_address', '')
 
         if not os.path.isfile(CONFIG_FILE):
             logger.log(u"Unable to find '" + CONFIG_FILE + "', all settings will be default!", logger.DEBUG)
