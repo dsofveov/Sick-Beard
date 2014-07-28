@@ -11,9 +11,13 @@ DEFAULT_SENDER = 'sickbeard@' + HOSTNAME
 class SMTPNotifier:
 
     def _send_email(self, server_address, server_port, subject, message, to_address, from_address=DEFAULT_SENDER):
-        logger.log(u"SMTP: _send_email " +message+" to " + to_address + " via " + server_address + ":" +server_port, logger.DEBUG)
+        logger.log(u"SMTP: _send_email " +message+" to " + to_address + " via " + server_address + ":" +server_port, logger.INFO)
         email_server = smtplib.SMTP(server_address, server_port)
-        email_server.sendmail(from_address, to_address, message)
+        try:
+            email_server.sendmail(from_address, to_address, message)
+        except:
+            logger.log(u"SMTP: _send_email " +message+" to " + to_address + " via " + server_address + ":" +server_port + "fail", logger.INFO)
+
 
 
 
