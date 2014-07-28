@@ -35,8 +35,8 @@ class SMTPNotifier:
         if sickbeard.SMTP_NOTIFY_ONSNATCH:
             self._notify(notifyStrings[NOTIFY_DOWNLOAD], ep_name)
 
-    def test_notify(self):
-        self._notify("Test", "This is a test notification from Sick Beard")
+    def test_notify(self, server_address, server_port, to_address):
+        self._notify(server_address, server_port, "Test", "This is a test notification from Sick Beard", to_address)
 
     def update_library(self, ep_obj=None):
         pass
