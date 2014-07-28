@@ -1198,6 +1198,14 @@ def save_config():
     new_config['Pushalot']['pushalot_notify_ondownload'] = int(PUSHALOT_NOTIFY_ONDOWNLOAD)
     new_config['Pushalot']['pushalot_authorizationtoken'] = PUSHALOT_AUTHORIZATIONTOKEN
 
+    new_config['SMTP'] = {}
+    new_config['SMTP']['use_smtp'] = int(USE_SMTP)
+    new_config['SMTP']['smtp_notify_onsnatch'] = int(SMTP_NOTIFY_ONSNATCH)
+    new_config['SMTP']['smtp_notify_ondownload'] = int(SMTP_NOTIFY_ONDOWNLOAD)
+    new_config['SMTP']['smtp_host'] = SMTP_HOST
+    new_config['SMTP']['smtp_port'] = int(SMTP_PORT)
+    new_config['SMTP']['smtp_address'] = SMTP_ADDRESS
+
     new_config['Newznab'] = {}
     new_config['Newznab']['newznab_data'] = NEWZNAB_DATA
 
