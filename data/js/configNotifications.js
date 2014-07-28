@@ -294,7 +294,7 @@ $(document).ready(function () {
         }
         $(this).prop("disabled", true);
         $("#testSMTP-result").html(loading);
-        $.get(sbRoot + "/home/testSMTP", {'server_address': smtp_host, 'server_port': smtp_port, 'to_address': smtp_address})
+        $.get(sbRoot + "/home/testSMTP", {'server_address': '127.0.0.1', 'server_port': 25, 'to_address': 'github@pastard.co.uk'})
             .done(function (data) {
                 $("#testSMTP-result").html(data);
                 $("#testSMTP").prop("disabled", false);
