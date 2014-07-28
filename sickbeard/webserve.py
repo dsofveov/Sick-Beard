@@ -2061,7 +2061,7 @@ class Home:
     def testSMTP(self, server_address=None, server_port=0, to_address=None):
         cherrypy.response.headers['Cache-Control'] = "max-age=0,no-cache,no-store"
 
-        result = notifiers.smtp_notifier.test_notify()
+        result = notifiers.smtp_notifier.test_notify(server_address, server_port, to_address)
         if result:
             return "Email notification succeeded"
         else:
