@@ -1103,7 +1103,8 @@ class ConfigNotifications:
                           use_pytivo=None, pytivo_notify_onsnatch=None, pytivo_notify_ondownload=None, pytivo_update_library=None,
                               pytivo_host=None, pytivo_share_name=None, pytivo_tivo_name=None,
                           use_nma=None, nma_notify_onsnatch=None, nma_notify_ondownload=None, nma_api=None, nma_priority=0,
-                          use_pushalot=None, pushalot_notify_onsnatch=None, pushalot_notify_ondownload=None, pushalot_authorizationtoken=None):
+                          use_pushalot=None, pushalot_notify_onsnatch=None, pushalot_notify_ondownload=None, pushalot_authorizationtoken=None,
+                          use_smtp=None, smtp_notify_onsnatch=None, smtp_notify_ondownload=None, smtp_host=None, smtp_port=0, smtp_address=None):
 
         results = []
 
@@ -1199,6 +1200,14 @@ class ConfigNotifications:
         sickbeard.TRAKT_USERNAME = trakt_username
         sickbeard.TRAKT_PASSWORD = trakt_password
         sickbeard.TRAKT_API = trakt_api
+
+        # Email
+        sickbeard.USE_SMTP = config.checkbox_to_value(use_smtp)
+        sickbeard.SMTP_NOTIFY_ONSNATCH = config.checkbox_to_value(smtp_notify_onsnatch)
+        sickbeard.SMTP_NOTIFY_ONDOWNLOAD = config.checkbox_to_value(smtp_notify_ondownload)
+        sickbeard.SMTP_HOST = smtp_host
+        sickbeard.SMTP_PORT = smtp_port
+        sickbeard.SMTP_ADDRESS = smtp_address
 
         sickbeard.save_config()
 
