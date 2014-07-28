@@ -2074,7 +2074,7 @@ class Home:
         if result:
             return "Email notification succeeded"
         else:
-            return "Error sending email"
+            return "Error sending email " + server_address + ":" + server_port + " " + to_address
 
     @cherrypy.expose
     def shutdown(self, pid=None):
