@@ -286,7 +286,7 @@ $(document).ready(function () {
 
     $("#testSMTP").click(function () {
         var smtp_host = $.trim($("#smtp_host").val());
-        var smtp_port = $.trim($("#smtp_port").val());
+        var smtp_port = parseInt($.trim($("#smtp_port").val()));
         var smtp_address = $.trim($("#smtp_address").val());
         if (!smtp_host || !smtp_port || !smtp_address) {
             $("#testSMTP-result").html("Please fill out the necessary fields above.");
