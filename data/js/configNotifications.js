@@ -284,4 +284,21 @@ $(document).ready(function () {
             });
     });
 
+    $("#testSMTP").click(function () {
+        var smtp_host = $.trim($("#smtp_host").val());
+        var smtp_port = $.trim($("#smtp_port").val());
+        var smtp_address = $.trim($("#smtp_address").val());
+        if (!smtp_host || !smtp_port || !smtp_address) {
+            $("#testSMTP-result").html("Please fill out the necessary fields above.");
+            return;
+        }
+        $(this).prop("disabled", true);
+        $("#testSMTP-result").html(loading);
+        $.get(sbRoot + "/home/testSMTP", {'server_address': smtp_host, 'server_port': smtp_port, 'to_address': smtp_address})
+            .done(function (data) {
+                $("#testSMTP-result").html(data);
+                $("#testSMTP").prop("disabled", false);
+            });
+    });
+
 });
