@@ -7,6 +7,7 @@ from email.MIMEText import MIMEText
 import sickbeard
 
 from sickbeard import logger
+from sickbeard.common import notifyStrings, NOTIFY_SNATCH, NOTIFY_DOWNLOAD
 
 HOSTNAME = os.uname()[1]
 DEFAULT_SENDER = 'sickbeard@' + HOSTNAME
@@ -48,11 +49,17 @@ class SMTPNotifier:
 
     def notify_snatch(self, ep_name):
         if sickbeard.SMTP_NOTIFY_ONSNATCH:
-            self._notify(notifyStrings[NOTIFY_SNATCH], ep_name)
+            server_address = sickbeard.SMTP_HOST
+            server_port = sickbeard.SMTP_PORT
+            to_address = sickbeard.SMTP_ADDRESS
+            self._notify(server_address, server_port, notifyStrings[NOTIFY_SNATCH], ep_name, to_address, from_address=DEFAULT_SENDER)
 
     def notify_download(self, ep_name):
-        if sickbeard.SMTP_NOTIFY_ONSNATCH:
-            self._notify(notifyStrings[NOTIFY_DOWNLOAD], ep_name)
+        if sickbeard.SMTP_NOTIFY_ONDOWNLOAD:
+            server_address = sickbeard.SMTP_HOST
+            server_port = sickbeard.SMTP_PORT
+            to_address = sickbeard.SMTP_ADDRESS
+            self._notify(server_address, server_port, notifyStrings[NOTIFY_DOWNLOAD], ep_name, to_address, from_address=DEFAULT_SENDER)
 
     def test_notify(self, server_address, server_port, to_address, from_address=DEFAULT_SENDER, force=True):
         return self._notify(server_address, server_port, "Test", "This is a test notification from Sick Beard", to_address, from_address, True)
