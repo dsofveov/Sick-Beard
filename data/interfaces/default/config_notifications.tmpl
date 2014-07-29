@@ -1055,6 +1055,20 @@
 
                         <div id="content_use_smtp">
                             <div class="field-pair">
+                                <input type="checkbox" name="smtp_notify_onsnatch" id="smtp_notify_onsnatch" #if $sickbeard.SMTP_NOTIFY_ONSNATCH then "checked=\"checked\"" else ""# />
+                                <label class="clearfix" for="smtp_notify_onsnatch">
+                                    <span class="component-title">Notify on Snatch</span>
+                                    <span class="component-desc">Send notification when we start a download?</span>
+                                </label>
+                            </div>
+                            <div class="field-pair">
+                                <input type="checkbox" name="smtp_notify_ondownload" id="smtp_notify_ondownload" #if $sickbeard.SMTP_NOTIFY_ONDOWNLOAD then "checked=\"checked\"" else ""# />
+                                <label class="clearfix" for="smtp_notify_ondownload">
+                                    <span class="component-title">Notify on Download</span>
+                                    <span class="component-desc">Send notification when we finish a download?</span>
+                                </label>
+                            </div>
+                            <div class="field-pair">
                                 <label class="nocheck clearfix">
                                     <span class="component-title">Email server</span>
                                     <input type="text" name="smtp_host" id="smtp_host" value="$sickbeard.SMTP_HOST" size="35" />
