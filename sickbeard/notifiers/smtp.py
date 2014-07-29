@@ -1,6 +1,9 @@
 import smtplib
 import os
 
+from email.MIMEMultipart import MIMEMultipart
+from email.MIMEText import MIMEText
+
 import sickbeard
 
 from sickbeard import logger
@@ -12,8 +15,17 @@ class SMTPNotifier:
 
     def _send_email(self, server_address, server_port, subject, message, to_address, from_address=DEFAULT_SENDER):
         email_server = smtplib.SMTP(server_address, int(server_port))
+
+        email = MIMEMultipart()
+
+        email['From'] = from_address
+        email['To'] = to_address
+        email['Subject'] = subject
+
+        email.attach(MIMEText(message, 'plain'))
+
         try:
-            email_server.sendmail(from_address, to_address, message)
+            email_server.sendmail(from_address, to_address, email.as_string())
             return True
 
         except:
