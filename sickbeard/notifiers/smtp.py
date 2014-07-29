@@ -62,7 +62,7 @@ class SMTPNotifier:
             self._notify(server_address, server_port, notifyStrings[NOTIFY_DOWNLOAD], ep_name, to_address, from_address=DEFAULT_SENDER)
 
     def test_notify(self, server_address, server_port, to_address, from_address=DEFAULT_SENDER, force=True):
-        return self._notify(server_address, server_port, "Test", "This is a test notification from Sick Beard", to_address, from_address, True)
+        return self._notify(server_address, server_port, "Testing", "This is a test notification from Sick Beard", to_address, from_address, True)
 
     def update_library(self, ep_obj=None):
         pass
